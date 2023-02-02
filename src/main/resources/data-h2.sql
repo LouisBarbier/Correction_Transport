@@ -2,10 +2,13 @@ INSERT INTO TORTUE(codet, nom) VALUES
         (18, 'Franklin'),
         (12, 'Ninja'),
         (34, 'Hermann');
+-- réinitialiser le compteur de clé auto-générée
+ALTER TABLE TORTUE ALTER COLUMN codet RESTART WITH 35;
 
 INSERT INTO ETABLISSEMENT(codeet, nom, adresse) VALUES
         (1,'Polyclinique Lambert', '23, avenue de Toulouse - 81000 Albi'),
         (2,'Laboratoire Bardou', '23, avenue de Carmaux - 81160 Saint-Juery');
+ALTER TABLE ETABLISSEMENT ALTER COLUMN codeet RESTART WITH 3;
 
 INSERT INTO SERVICE(codeservice, nom, batiment, codeet) VALUES
         ('12','Lingerie','Bat. C2', 1),
@@ -26,13 +29,14 @@ INSERT INTO CONTAINER(codec, type, etat, contenu) VALUES
     (98, 'Linge','En service', 'Plein'),
     (106, 'Repas','En service', 'Plein'),
     (116, 'Analyse','En service', 'Vide');
+ALTER TABLE CONTAINER ALTER COLUMN codec RESTART WITH 117;
 
 INSERT INTO TRANSPORTMATERIEL(idtransport, codet, codec, codeg_gare_depart, codeg_gare_arrivee, date_t, heuredepart, heurearrivee)
     VALUES(7432, 18, 98, '1' ,  '12', '2008-11-12', '10:55','11:30'),
           (7612, 18, 98, '1' ,  '12', '2008-11-12', '11:05','11:35'),
           (5712, 12, 116, '2' ,  '13','2008-11-19', '14:05','14:35'),
           (8756, 18, 98, '12', '1', '2008-12-18',   '10:30', null);
-
+ALTER TABLE TRANSPORTMATERIEL ALTER COLUMN idtransport RESTART WITH 8757;
 
 
 INSERT INTO PATIENT(ipp, nom, prenom, datenaiss) VALUES 
@@ -89,6 +93,7 @@ INSERT INTO PATIENT(ipp, nom, prenom, datenaiss) VALUES
         (219, 'Touron', NULL, NULL),
         (220, 'Dedieu', NULL, NULL),
         (221, 'Lignot', NULL, NULL);
+ALTER TABLE PATIENT ALTER COLUMN ipp RESTART WITH 8757;
 
 INSERT INTO PERSONNEL(code, nom, prenom) VALUES
         (12, 'Durand', 'Georges'),
@@ -99,6 +104,7 @@ INSERT INTO PERSONNEL(code, nom, prenom) VALUES
         (17, 'Tran', 'Leon'),
         (18, 'Ariege', 'Anne'),
         (19, 'Lozaire', 'Paul');
+ALTER TABLE PERSONNEL ALTER COLUMN code RESTART WITH 20;
 
 INSERT INTO EXAMEN(numexamen, ipp, type, natureacte, contagiosite, date_e, heure, commentaire) VALUES
     (790,1,'Radio' , 'Scanner de la hanche', 0, '2007-11-28', '10:45', 'urgent' ),
@@ -112,6 +118,7 @@ INSERT INTO EXAMEN(numexamen, ipp, type, natureacte, contagiosite, date_e, heure
     (798,12, 'Radio' , 'Scanner facial', 0,'2007-11-29',    '08:15','urgent'),
     (799,25, 'Radio' , 'Radio des hanches', 0,'2007-11-27', '13:15','urgent'),
     (800,53, 'Radio' , 'Radio des hanches', 0,'2007-11-27', '13:45','urgent');
+ALTER TABLE EXAMEN ALTER COLUMN numexamen RESTART WITH 801;
 
 
 INSERT INTO TRANSPORTPERSONNE(idtransport, codeservice_service_depart, ipp, numexamen, codeservice_service_arrivee, date_t, heuredepart, heurearrivee) VALUES
@@ -121,8 +128,7 @@ INSERT INTO TRANSPORTPERSONNE(idtransport, codeservice_service_depart, ipp, nume
     (7443, '17',1,791,'45',  '2007-11-28',   '16:30','16:40' ),
     (7446, '45', 101, 792,'21','2007-11-28', '11:30','11:55' ),
     (7448, '21', 101, 792,'45','2007-11-28', '12:30','13:55' );
-
-
+ALTER TABLE TRANSPORTPERSONNE ALTER COLUMN idtransport RESTART WITH 7449;
 
 INSERT INTO EFFECTUER(code, idtransport) VALUES
     (12, 7432),

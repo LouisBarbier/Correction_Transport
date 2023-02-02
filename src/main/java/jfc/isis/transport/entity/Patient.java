@@ -1,6 +1,7 @@
 package jfc.isis.transport.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.sql.Date;
 import java.util.Collection;
@@ -17,6 +18,7 @@ public class Patient {
     private String nom;
     @Basic
     @Column(name = "prenom")
+    @NotEmpty
     private String prenom;
     @Basic
     @Column(name = "datenaiss")
